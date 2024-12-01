@@ -6,6 +6,7 @@ export const POST = async () => {
 
   // Expire the token by setting an empty token with an immediate expiry
   res.cookies.set('token', '', { httpOnly: true, expires: new Date(0) });
+  res.cookies.set('userId', '', { httpOnly: true, expires: new Date(0) });
 
   return res;
 };

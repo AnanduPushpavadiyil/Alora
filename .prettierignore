@@ -1,41 +1,11 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# Ignore everything by default
+*
 
-# dependencies
-/node_modules
-/.pnp
-.pnp.js
-
-# testing
-/coverage
-
-# next.js
-.next
-/.next/
-/out/
-
-# production
-/build
-
-# misc
-.DS_Store
-*.pem
-
-# debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-.pnpm-debug.log*
-
-# local env files
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-# vercel
-.vercel
-
-# changelog
-CHANGELOG.md
-
-pnpm-lock.yaml
+# Un-ignore only the src folder and its contents
+!src/
+!src/**
+# ignore with extensions
+**/*.html
+**/*.css
+**/*.d.ts
+**/*.d.json

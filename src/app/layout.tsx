@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { ThemeProvider } from 'next-themes';
 import * as React from 'react';
 
 import '@/styles/globals.css';
@@ -6,7 +7,6 @@ import '@/styles/globals.css';
 import '@/styles/colors.css';
 
 import { siteConfig } from '@/constant/config';
-
 // !STARTERCONF Change these default meta
 // !STARTERCONF Look at @/constant/config to change them
 export const metadata: Metadata = {
@@ -55,8 +55,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html>
-      <body>{children}</body>
+    <html suppressHydrationWarning>
+      <head />
+      <body>
+        <ThemeProvider enableSystem={true} attribute='class'>
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
