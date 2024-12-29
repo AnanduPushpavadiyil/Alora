@@ -10,12 +10,14 @@ if (!config.mongoose.url) {
  * Global is used to maintain a cached connection across hot reloads in development.
  * This prevents connections from being recreated excessively.
  */
+// @ts-expect-error: un known error need to fix it in future
 let cached = global.mongoose as {
   conn: mongoose.Connection | null;
   promise: Promise<mongoose.Connection> | null;
 };
 
 if (!cached) {
+  // @ts-expect-error: un known error need to fix it in future
   cached = global.mongoose = { conn: null, promise: null };
 }
 
