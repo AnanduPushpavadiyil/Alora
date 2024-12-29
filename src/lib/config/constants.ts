@@ -1,16 +1,16 @@
-const tokenTypes = {
+export const tokenTypes = {
   ACCESS: 'access',
   REFRESH: 'refresh',
   RESET_PASSWORD: 'resetPassword',
   VERIFY_EMAIL: 'verifyEmail',
 };
 
-const statusTypes = {
+export const statusTypes = {
   ENABLED: 'enabled',
   DISABLED: 'disabled',
 };
 
-const transactionTypes = {
+export const transactionTypes = {
   TRANSFER: 'transfer',
   LIST: 'list',
   BUY: 'buy',
@@ -18,15 +18,8 @@ const transactionTypes = {
   REMOVE: 'remove',
 };
 
-const mediaTypes = {
+export const mediaTypes = {
   IMAGE: 'image',
   VIDEO: 'video',
   MODELS_3D: '3d',
-};
-
-module.exports = {
-  tokenTypes,
-  statusTypes,
-  transactionTypes,
-  mediaTypes,
 };

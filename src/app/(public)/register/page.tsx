@@ -4,8 +4,8 @@
 
 import { useState } from 'react';
 
-import Footer from '@/app/components/customer/footer';
-import NavBar from '@/app/components/customer/navbar';
+import Footer from '@/app/components/customer/common/footer';
+import NavBar from '@/app/components/customer/common/navbar';
 import Wrapper from '@/app/components/wrapper';
 
 const RegisterPage: React.FC = () => {

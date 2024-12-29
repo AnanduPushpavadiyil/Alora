@@ -1,8 +1,8 @@
-import httpStatus from 'http-status';
 import jwt from 'jsonwebtoken';
 import moment from 'moment';
 
 import ApiError from '@/lib/ApiError';
+import { tokenTypes } from '@/lib/config/constants';
 import AdminAuthToken from '@/lib/models/admin-auth-token.model';
 import UserService from '@/lib/services/user.service';
 import { UserType } from '@/lib/type';
@@ -77,7 +77,7 @@ const verifyToken = async (token: string, type: string): Promise<unknown> => {
       blacklisted: false,
     });
     if (!tokenDoc) {
-      throw new ApiError(httpStatus.NOT_FOUND, 'Token not found');
+      throw new ApiError(404, 'Token not found');
     }
     return payload;
   } catch (error) {
@@ -115,7 +115,7 @@ const generateAuthTokens = async (
     'minutes'
   );
   const accessToken = generateToken(
-    user.id,
+    user.id || '',
     accessTokenExpires,
     tokenTypes.ACCESS
   );
@@ -125,13 +125,13 @@ const generateAuthTokens = async (
     'days'
   );
   const refreshToken = generateToken(
-    user.id,
+    user.id || '',
     refreshTokenExpires,
     tokenTypes.REFRESH
   );
   await saveToken(
     refreshToken,
-    user.id,
+    user.id || '',
     refreshTokenExpires,
     tokenTypes.REFRESH
   );
@@ -158,7 +158,7 @@ const generateResetPasswordToken = async (
 ): Promise<{ resetPasswordToken: string; user: UserType }> => {
   const user = await UserService.getUserEmail(email);
   if (!user) {
-    throw new ApiError(httpStatus.NOT_FOUND, 'No users found with this email');
+    throw new ApiError(404, 'No users found with this email');
   }
   const expires = moment().add(
     config.jwt.resetPasswordExpirationMinutes,

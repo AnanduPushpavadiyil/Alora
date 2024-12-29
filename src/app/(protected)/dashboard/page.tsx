@@ -9,7 +9,11 @@ import Loader from '@/app/components/Loader';
 
 const DashboardPage: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
-  const [data, setData] = useState<null>(null);
+  const [data, setData] = useState<{
+    firstName?: string;
+    email?: string;
+    createdAt?: string;
+  }>({});
   const [error, setError] = useState<string>('');
   useEffect(() => {
     const fetchDashboardData = async () => {

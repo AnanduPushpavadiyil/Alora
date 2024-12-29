@@ -1,5 +1,7 @@
 import mongoose, { Document, Schema } from 'mongoose';
 
+import { tokenTypes } from '@/lib/config/constants';
+
 // import { toJSON } from './plugins';
 // import { tokenTypes } from '../config/constants';
 
