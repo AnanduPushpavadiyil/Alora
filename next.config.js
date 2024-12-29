@@ -7,15 +7,20 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
 
-  // Uncoment to add domain whitelist
-  // images: {
-  //   remotePatterns: [
-  //     {
-  //       protocol: 'https',
-  //       hostname: 'res.cloudinary.com',
-  //     },
-  //   ]
-  // },
+  // Enable static export
+  output: 'export', // Required for `next export`
+
+  // Uncomment to add domain whitelist for images
+  // Ensure compatibility with static export
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+      },
+    ],
+    unoptimized: true, // Necessary for `next export`
+  },
 
   webpack(config) {
     // Grab the existing rule that handles SVG imports
