@@ -71,7 +71,7 @@ const NavBar: React.FC<{
         </div>
 
         <Image
-          src='/images/logo-removebg-preview.png'
+          src='./images/logo-removebg-preview.png'
           alt='Logo'
           width={100}
           height={50}
