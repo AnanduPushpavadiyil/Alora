@@ -7,12 +7,13 @@ import NavBar from '@/app/components/customer/common/navbar';
 
 const Wrapper: React.FC<{
   children: React.ReactNode;
-}> = ({ children }) => {
+  path?: string;
+}> = ({ children, path }) => {
   return (
     <>
       <div className='min-h-screen bg-theme-primary'>
         <div className=''>
-          <NavBar />
+          <NavBar path={path} />
         </div>
         {children}
       </div>

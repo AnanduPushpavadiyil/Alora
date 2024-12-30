@@ -60,7 +60,7 @@ const NavBar: React.FC = () => {
             </button>
           </div>
           <Image
-            src='./images/2023-03-17.jpg'
+            src='/images/2023-03-17.jpg'
             alt='Logo'
             width={50}
             height={50}

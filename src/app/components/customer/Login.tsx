@@ -44,7 +44,7 @@ const Login: React.FC = () => {
       <div
         className='flex items-center justify-center min-h-screen bg-cover bg-center'
         style={{
-          backgroundImage: 'url(./images/threads-166858_1920.jpg)',
+          backgroundImage: 'url(/images/threads-166858_1920.jpg)',
           backgroundSize: 'cover', // Ensures the image covers the entire background
           backgroundRepeat: 'no-repeat', // Prevents the image from repeating
           backgroundPosition: 'center', // Centers the image
@@ -73,7 +73,7 @@ const Login: React.FC = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className='block w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500'
+                className='block w-full p-3 border text-black border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500'
                 placeholder='you@example.com'
               />
             </div>
@@ -90,7 +90,7 @@ const Login: React.FC = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                className='block w-full p-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500'
+                className='block w-full p-3 border text-black border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500'
                 placeholder='Your password'
               />
             </div>

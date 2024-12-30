@@ -5,14 +5,14 @@
 // import { useState } from 'react';
 
 import Wrapper from '@/app/components/customer/common/wrapper';
-import Login from '@/app/components/customer/Login';
+import ContactUs from '@/app/components/customer/ContactUs';
 
-const LoginPage: React.FC = () => {
+const ContactUsPage: React.FC = () => {
   return (
-    <Wrapper path='/login'>
-      <Login />
+    <Wrapper path='/contact'>
+      <ContactUs />
     </Wrapper>
   );
 };
 
-export default LoginPage;
+export default ContactUsPage;

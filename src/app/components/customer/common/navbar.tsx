@@ -8,7 +8,9 @@ import { FaMoon, FaSun } from 'react-icons/fa';
 
 import { navbar } from '@/app/components/customer/common/config';
 
-const NavBar: React.FC = () => {
+const NavBar: React.FC<{
+  path?: string;
+}> = ({ path }) => {
   const [isMenuOpen, setMenuOpen] = useState(false);
 
   const { theme, setTheme } = useTheme();
@@ -67,43 +69,38 @@ const NavBar: React.FC = () => {
             <FaBars size={24} />
           </button>
         </div>
+
         <Image
-          src='./images/2023-03-17.jpg'
+          src='/images/logo-removebg-preview.png'
           alt='Logo'
-          width={50}
+          width={100}
           height={50}
+          className='filter invert brightness-200 dark:filter-none dark:invert-0 dark:brightness-100 animate-slideInLeft hover:scale-130 transition-all duration-500 ease-in-out glow-effect'
         />
-        {/* <h1 className='text-xl font-bold'>Alora</h1> */}
-        <div className='logo relative'>
-          <h2 className='first dark:text-gray-600  text-gray-400 absolute text-[30px] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 [text-stroke:2px_#05a8f3]'>
-            Alora
-          </h2>
-          <h2 className='second absolute text-[30px] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 dark:text-gray-100 dark:hover:text-[#3B82F6] hover:text-[#3B82F6] text-gray-800 [text-stroke:2px_#05a8f3] animate-waves'>
-            Alora
-          </h2>
-        </div>
       </div>
 
       <div className='flex space-x-6'>
         <div className='hidden sm:flex gap-2'>
-          {navbar.map((item, index) => (
-            <Link
-              key={index}
-              href={item.link}
-              className='dark:hover:text-gray-600 dark:hover:bg-gray-200 hover:text-gray-200 hover:bg-gray-600 border dark:border-gray-200 border-gray-700 p-2 rounded-md transition cursor-pointer'
-            >
-              <div className='flex gap-1'>
-                {item.icon && (
-                  <div>
-                    {React.createElement(item.icon, {
-                      size: '20',
-                    })}
-                  </div>
-                )}
-                {item.text}
-              </div>
-            </Link>
-          ))}
+          {navbar
+            .filter((item) => (path ? item.link !== path : item))
+            .map((item, index) => (
+              <Link
+                key={index}
+                href={item.link}
+                className='dark:hover:text-gray-600 dark:hover:bg-gray-200 hover:text-gray-200 hover:bg-gray-600 border dark:border-gray-200 border-gray-700 p-2 rounded-md transition cursor-pointer'
+              >
+                <div className='flex gap-1'>
+                  {item.icon && (
+                    <div>
+                      {React.createElement(item.icon, {
+                        size: '20',
+                      })}
+                    </div>
+                  )}
+                  {item.text}
+                </div>
+              </Link>
+            ))}
         </div>
         <Link
           href='#'
@@ -152,16 +149,18 @@ const NavBar: React.FC = () => {
             </div>
 
             <div className='flex flex-col space-y-4'>
-              {navbar.map((item, index) => (
-                <Link
-                  key={index}
-                  className='hover:text-gray-200 hover:bg-blue-500 transition p-2 rounded'
-                  href={item.link}
-                  onClick={() => setMenuOpen(false)} // Close the menu when an item is clicked
-                >
-                  {item.text}
-                </Link>
-              ))}
+              {navbar
+                .filter((item) => (path ? item.link !== path : item))
+                .map((item, index) => (
+                  <Link
+                    key={index}
+                    className='hover:text-gray-200 hover:bg-blue-500 transition p-2 rounded'
+                    href={item.link}
+                    onClick={() => setMenuOpen(false)} // Close the menu when an item is clicked
+                  >
+                    {item.text}
+                  </Link>
+                ))}
             </div>
           </div>
         </div>

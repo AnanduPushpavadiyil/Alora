@@ -22,7 +22,7 @@ export default function HomePage() {
       <Head>
         <title>Alora designer stiching center</title>
       </Head>
-      <Wrapper>
+      <Wrapper path='/'>
         <Home />
       </Wrapper>
     </main>
