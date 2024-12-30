@@ -11,7 +11,7 @@ const nextConfig = {
   output: 'export', // Required for `next export`
   
   basePath: '/Alora', // Add the repository name here
-  assetPrefix: '/Alora', // Ensures static assets use the correct prefix
+  assetPrefix: './', // Ensures static assets use the correct prefix
   // Uncomment to add domain whitelist for images
   // Ensure compatibility with static export
   images: {

@@ -44,7 +44,7 @@ const Login: React.FC = () => {
       <div
         className='flex items-center justify-center min-h-screen bg-cover bg-center'
         style={{
-          backgroundImage: 'url(/images/threads-166858_1920.jpg)',
+          backgroundImage: 'url(./images/threads-166858_1920.jpg)',
           backgroundSize: 'cover', // Ensures the image covers the entire background
           backgroundRepeat: 'no-repeat', // Prevents the image from repeating
           backgroundPosition: 'center', // Centers the image

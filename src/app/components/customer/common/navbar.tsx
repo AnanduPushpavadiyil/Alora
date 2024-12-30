@@ -67,7 +67,12 @@ const NavBar: React.FC = () => {
             <FaBars size={24} />
           </button>
         </div>
-        <Image src='/images/2023-03-17.jpg' alt='Logo' width={50} height={50} />
+        <Image
+          src='./images/2023-03-17.jpg'
+          alt='Logo'
+          width={50}
+          height={50}
+        />
         {/* <h1 className='text-xl font-bold'>Alora</h1> */}
         <div className='logo relative'>
           <h2 className='first dark:text-gray-600  text-gray-400 absolute text-[30px] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 [text-stroke:2px_#05a8f3]'>
