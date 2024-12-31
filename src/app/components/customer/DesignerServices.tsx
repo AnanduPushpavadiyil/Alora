@@ -36,7 +36,7 @@ const DesignerServices = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 1 }}
             >
-              <div className='dark:bg-black bg-white dark:bg-opacity-50 bg-opacity-50 p-6 rounded-lg'>
+              <div className='dark:bg-black bg-white dark:bg-opacity-50 bg-opacity-50 p-6 rounded-lg w-[80%]'>
                 <h2 className='text-4xl font-bold mb-4'>{service.title}</h2>
                 <p className='text-xl'>{service.description}</p>
               </div>

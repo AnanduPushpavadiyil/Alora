@@ -147,3 +147,11 @@
 .animate-slideInLeft {
   animation: slideInLeft 1s ease-out forwards;
 }
+
+.navbar-gradient {
+  background: linear-gradient(180deg, #f0f0f0 10%, hsla(0, 0%, 94%, 0));
+}
+
+.navbar-gradient-dark {
+  background: linear-gradient(180deg, #1f2937 10%, hsla(0, 0%, 94%, 0));
+}
