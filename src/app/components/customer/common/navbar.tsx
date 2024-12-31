@@ -83,124 +83,125 @@ const NavBar: React.FC<{
   if (!mounted) return null;
 
   return (
-    <nav
-      className={`fixed flex justify-between h-[10%] items-center w-full p-4 shadow-md transform transition-all duration-1000 ease-in-out 
-      ${
-        scrollPosition > 50
-          ? showNav
-            ? 'translate-y-0 opacity-100'
-            : '-translate-y-full opacity-0'
-          : 'translate-y-0 opacity-100'
-      } 
-      ${theme === 'dark' ? 'navbar-gradient-dark' : 'navbar-gradient'} 
-      z-50 backdrop-blur-md bg-opacity-50 dark:bg-opacity-50`}
-    >
-      <div className='flex items-center space-x-4 gap-8'>
-        <div className='sm:hidden'>
-          <button
-            onClick={() => setMenuOpen(!isMenuOpen)}
-            className='text-gray-700 dark:text-white hover:text-gray-200 transition cursor-pointer'
-          >
-            <FaBars size={24} />
-          </button>
-        </div>
-
-        <Image
-          src='/images/logo-removebg-preview.png'
-          alt='Logo'
-          width={200}
-          height={100}
-          className='filter invert brightness-200 dark:filter-none dark:invert-0 dark:brightness-100 animate-slideInLeft hover:scale-130 transition-all duration-500 ease-in-out glow-effect'
-        />
-      </div>
-
-      <div className='flex space-x-6'>
-        <div className='hidden sm:flex gap-2'>
-          {navbar
-            .filter((item) => (path ? item.link !== path : item))
-            .map((item, index) => (
-              <Link
-                key={index}
-                href={item.link}
-                className='dark:hover:text-gray-600 dark:hover:bg-gray-200 hover:text-gray-200 hover:bg-gray-600 border dark:border-gray-200 border-gray-700 p-2 rounded-md transition cursor-pointer'
-              >
-                <div className='flex gap-1'>
-                  {item.icon && (
-                    <div>
-                      {React.createElement(item.icon, {
-                        size: '20',
-                      })}
-                    </div>
-                  )}
-                  {item.text}
-                </div>
-              </Link>
-            ))}
-        </div>
-        <Link
-          href='#'
-          onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
-          className='hover:text-gray-200 transition cursor-pointer'
+    <div>
+      {!isMenuOpen ? (
+        <nav
+          className={`fixed flex justify-between h-[10%] items-center w-full p-4 shadow-md transform transition-all duration-1000 ease-in-out 
+          ${
+            scrollPosition > 50
+              ? showNav
+                ? 'translate-y-0 opacity-100'
+                : '-translate-y-full opacity-0'
+              : 'translate-y-0 opacity-100'
+          } 
+          ${theme === 'dark' ? 'navbar-gradient-dark' : 'navbar-gradient'} 
+          z-50 backdrop-blur-md bg-opacity-50 dark:bg-opacity-50`}
         >
-          <div className='flex items-center space-x-4 pt-1  '>
-            <div
-              className={`p-2 rounded-full transition border-2 ${
-                theme === 'dark'
-                  ? 'bg-gray-800 hover:bg-gray-200 text-white border-gray-200'
-                  : 'bg-gray-200 hover:bg-gray-800 text-black border-gray-700'
-              }`}
-            >
-              {theme === 'dark' ? (
-                <FaSun className='text-yellow-500' />
-              ) : (
-                <FaMoon className='text-blue-500' />
-              )}
-            </div>
-          </div>
-        </Link>
-      </div>
-
-      {/* Side Modal */}
-      {isMenuOpen && (
-        <div
-          className='fixed inset-0 bg-black bg-opacity-50 z-40'
-          onClick={() => setMenuOpen(false)} // Close menu when clicking outside
-        >
-          <div
-            className='fixed top-0 left-0 dark:bg-gray-700 bg-gray-100 w-64 h-full z-50 p-4'
-            onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside the modal
-          >
-            <div className='flex justify-between items-center mb-6'>
-              <h2 className='dark:text-white text-black text-lg font-bold'>
-                Menu
-              </h2>
-
+          <div className='flex items-center space-x-4 gap-8'>
+            <div className='sm:hidden'>
               <button
-                onClick={() => setMenuOpen(false)}
-                className='dark:text-white text-black hover:text-gray-200 transition'
+                onClick={() => setMenuOpen(!isMenuOpen)}
+                className='text-gray-700 dark:text-white hover:text-gray-200 transition cursor-pointer'
               >
-                <FaTimes size={24} />
+                <FaBars size={24} />
               </button>
             </div>
 
-            <div className='flex flex-col space-y-4'>
+            <Image
+              src='/images/logo-removebg-preview.png'
+              alt='Logo'
+              width={200}
+              height={100}
+              className='filter invert brightness-200 dark:filter-none dark:invert-0 dark:brightness-100 animate-slideInLeft hover:scale-130 transition-all duration-500 ease-in-out glow-effect'
+            />
+          </div>
+
+          <div className='flex space-x-6'>
+            <div className='hidden sm:flex gap-2'>
               {navbar
                 .filter((item) => (path ? item.link !== path : item))
                 .map((item, index) => (
                   <Link
                     key={index}
-                    className='hover:text-gray-200 hover:bg-blue-500 transition p-2 rounded'
+                    href={item.link}
+                    className='dark:hover:text-gray-600 dark:hover:bg-gray-200 hover:text-gray-200 hover:bg-gray-600 border dark:border-gray-200 border-gray-700 p-2 rounded-md transition cursor-pointer'
+                  >
+                    <div className='flex gap-1'>
+                      {item.icon && (
+                        <div>
+                          {React.createElement(item.icon, {
+                            size: '20',
+                          })}
+                        </div>
+                      )}
+                      {item.text}
+                    </div>
+                  </Link>
+                ))}
+            </div>
+            <Link
+              href='#'
+              onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+              className='hover:text-gray-200 transition cursor-pointer'
+            >
+              <div className='flex items-center space-x-4 pt-1  '>
+                <div
+                  className={`p-2 rounded-full transition border-2 ${
+                    theme === 'dark'
+                      ? 'bg-gray-800 hover:bg-gray-200 text-white border-gray-200'
+                      : 'bg-gray-200 hover:bg-gray-800 text-black border-gray-700'
+                  }`}
+                >
+                  {theme === 'dark' ? (
+                    <FaSun className='text-yellow-500' />
+                  ) : (
+                    <FaMoon className='text-blue-500' />
+                  )}
+                </div>
+              </div>
+            </Link>
+          </div>
+        </nav>
+      ) : (
+        <div
+          className='fixed inset-0 bg-black z-50 duration-300'
+          onClick={() => setMenuOpen(false)} // Close menu when clicking outside
+        >
+          <div
+            className='w-full fixed top-0 left-0 dark:bg-gray-800 bg-white h-full z-50 p-6 shadow-xl transform transition-all duration-300'
+            onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside
+          >
+            <div className='flex justify-between items-center mb-8'>
+              <h2 className='dark:text-white text-black text-lg font-semibold'>
+                Menu
+              </h2>
+
+              <button
+                onClick={() => setMenuOpen(false)}
+                className='dark:text-white text-black hover:text-gray-500 transition duration-200'
+              >
+                <FaTimes size={24} />
+              </button>
+            </div>
+
+            <div className='flex flex-col space-y-6 '>
+              {navbar
+                .filter((item) => (path ? item.link !== path : item))
+                .map((item, index) => (
+                  <Link
+                    key={index}
+                    className='flex items-center space-x-2 text-lg font-medium text-gray-800 dark:text-white hover:bg-gray-600 hover:text-white rounded-lg p-2 transition duration-200'
                     href={item.link}
                     onClick={() => setMenuOpen(false)} // Close the menu when an item is clicked
                   >
-                    {item.text}
+                    <span>{item.text}</span>
                   </Link>
                 ))}
             </div>
           </div>
         </div>
       )}
-    </nav>
+    </div>
   );
 };
 
