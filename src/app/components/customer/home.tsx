@@ -1,12 +1,11 @@
 import { motion } from 'framer-motion'; // Import framer-motion
 
 import DesignerServices from '@/app/components/customer/DesignerServices';
+import EnquiryModal from '@/app/components/customer/EnquiryModal';
 import GoogleReview from '@/app/components/customer/GoogleReview';
 import PhotographyGallery from '@/app/components/customer/PhotographyGallery';
 
 const Home: React.FC = () => {
-  // const categories = ['Cotton', 'Silk', 'Wool', 'Linen', 'Velvet'];
-
   return (
     <motion.div
       className='min-h-screen bg-cover bg-center pt-24 bg-gray-200 dark:bg-gray-700'
@@ -14,6 +13,9 @@ const Home: React.FC = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
     >
+      <section className='dark:bg-gray-700 bg-gray-200 py-8'>
+        <EnquiryModal />
+      </section>
       {/* Highlighted Section for Designer Stitching & Wedding Dresses */}
       <section className='dark:bg-gray-700 bg-gray-200 py-8'>
         <DesignerServices />

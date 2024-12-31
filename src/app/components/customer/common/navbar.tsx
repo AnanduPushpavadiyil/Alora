@@ -24,7 +24,10 @@ const NavBar: React.FC<{
 
   const [scrollPosition, setScrollPosition] = useState(0);
   const [lastScrollPosition, setLastScrollPosition] = useState(0); // Track the last scroll position
-  const [showNav, setShowNav] = useState(false); // Track the last scroll position
+  const [showNav, setShowNav] = useState(false); // Track the visibility of the navbar
+
+  // Track if the mouse is near the top
+  const [isMouseNearTop, setIsMouseNearTop] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -48,17 +51,49 @@ const NavBar: React.FC<{
     setLastScrollPosition(scrollPosition);
   }, [scrollPosition, lastScrollPosition]);
 
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      // If the mouse is near the top, show the navbar
+      if (e.clientY < 50) {
+        setIsMouseNearTop(true);
+      } else {
+        setIsMouseNearTop(false);
+      }
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
+
+  useEffect(() => {
+    // Show the navbar when the mouse is near the top and it's currently hidden
+    if (isMouseNearTop && scrollPosition > 50 && !showNav) {
+      setShowNav(true);
+    }
+
+    // Hide the navbar when the mouse leaves the top
+    if (!isMouseNearTop && scrollPosition > 50 && showNav) {
+      setShowNav(false);
+    }
+  }, [isMouseNearTop, scrollPosition, showNav]);
+
   if (!mounted) return null;
 
   return (
     <nav
-      className={`fixed flex justify-between items-center w-full p-4 shadow-md transition-all duration-300 ease-in-out ${
-        scrollPosition > 1000
+      className={`fixed flex justify-between h-[10%] items-center w-full p-4 shadow-md transform transition-all duration-1000 ease-in-out 
+      ${
+        scrollPosition > 50
           ? showNav
-            ? 'opacity-100'
-            : 'opacity-0'
-          : 'opacity-100'
-      } bg-slate-100 dark:bg-gray-800 z-50`}
+            ? 'translate-y-0 opacity-100'
+            : '-translate-y-full opacity-0'
+          : 'translate-y-0 opacity-100'
+      } 
+      ${theme === 'dark' ? 'navbar-gradient-dark' : 'navbar-gradient'} 
+      z-50 backdrop-blur-md bg-opacity-50 dark:bg-opacity-50`}
     >
       <div className='flex items-center space-x-4 gap-8'>
         <div className='sm:hidden'>
@@ -73,8 +108,8 @@ const NavBar: React.FC<{
         <Image
           src='/images/logo-removebg-preview.png'
           alt='Logo'
-          width={100}
-          height={50}
+          width={200}
+          height={100}
           className='filter invert brightness-200 dark:filter-none dark:invert-0 dark:brightness-100 animate-slideInLeft hover:scale-130 transition-all duration-500 ease-in-out glow-effect'
         />
       </div>

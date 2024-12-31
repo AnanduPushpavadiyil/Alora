@@ -1,4 +1,4 @@
-interface Product {
+export interface Product {
   name: string;
   image: string;
   width: number;
@@ -6,8 +6,14 @@ interface Product {
 }
 export const products: Product[] = [
   {
-    image: '/images/landing/alor.adesigner__2024-10-19T071850.000Z.jpg ',
-    name: '19T071850',
+    image: '/images/landing/alor.adesigner__2024-09-23T052832.000Z.jpg ',
+    name: '23T052832',
+    width: 300,
+    height: 400,
+  },
+  {
+    image: '/images/landing/alor.adesigner__2024-09-23T052832.000Z_1.jpg ',
+    name: '23T052832',
     width: 300,
     height: 400,
   },
@@ -20,6 +26,12 @@ export const products: Product[] = [
   {
     image: '/images/landing/alor.adesigner__2024-09-25T085431.000Z_1.jpg ',
     name: '25T085431',
+    width: 300,
+    height: 400,
+  },
+  {
+    image: '/images/landing/alor.adesigner__2024-10-19T071850.000Z.jpg ',
+    name: '19T071850',
     width: 300,
     height: 400,
   },
@@ -44,18 +56,6 @@ export const products: Product[] = [
   {
     image: '/images/landing/alor.adesigner__2024-11-26T134028.000Z.jpg ',
     name: '26T134028',
-    width: 300,
-    height: 400,
-  },
-  {
-    image: '/images/landing/alor.adesigner__2024-09-23T052832.000Z.jpg ',
-    name: '23T052832',
-    width: 300,
-    height: 400,
-  },
-  {
-    image: '/images/landing/alor.adesigner__2024-09-23T052832.000Z_1.jpg ',
-    name: '23T052832',
     width: 300,
     height: 400,
   },
@@ -114,7 +114,7 @@ export const dummyReviews = () => {
     {
       author_name: 'Sandra',
       rating: 5,
-      text: 'Great service! The stitching quality is amazing and the staff is really friendly.',
+      text: 'Great service! The stitching quality is amazing and the staff is really friendly.Great service! The stitching quality is amazing and the staff is really friendly.Great service! The stitching quality is amazing and the staff is really friendly.Great service! The stitching quality is amazing and the staff is really friendly.Great service! The stitching quality is amazing and the staff is really friendly.',
       profile_photo_url:
         '/images/landing/alor.adesigner__2024-12-06T104505.000Z.jpg',
     },
