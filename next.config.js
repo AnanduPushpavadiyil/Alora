@@ -7,22 +7,22 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
 
-  // Enable static export
-  output: 'export', // Required for `next export`
+  // // Enable static export
+  // output: 'export', // Required for `next export`
   
-  basePath: '/Alora', // Add the repository name here
-  assetPrefix: './', // Ensures static assets use the correct prefix
-  // Uncomment to add domain whitelist for images
-  // Ensure compatibility with static export
-  images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'res.cloudinary.com',
-      },
-    ],
-    unoptimized: true, // Necessary for `next export`
-  },
+  // basePath: '/Alora', // Add the repository name here
+  // assetPrefix: './', // Ensures static assets use the correct prefix
+  // // Uncomment to add domain whitelist for images
+  // // Ensure compatibility with static export
+  // images: {
+  //   remotePatterns: [
+  //     {
+  //       protocol: 'https',
+  //       hostname: 'res.cloudinary.com',
+  //     },
+  //   ],
+  //   unoptimized: true, // Necessary for `next export`
+  // },
 
   webpack(config) {
     // Grab the existing rule that handles SVG imports
