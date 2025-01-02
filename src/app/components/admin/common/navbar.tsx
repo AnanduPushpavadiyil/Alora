@@ -130,7 +130,7 @@ const NavBar: React.FC<{
             </div>
 
             <Image
-              src='/images/logo-removebg-preview.png'
+              src='./images/logo-removebg-preview.png'
               alt='Logo'
               width={200}
               height={100}
