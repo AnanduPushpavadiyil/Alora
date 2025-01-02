@@ -14,7 +14,6 @@ const NavBar: React.FC<{
   const [isMenuOpen, setMenuOpen] = useState(false);
 
   const { theme, setTheme } = useTheme();
-
   const [mounted, setMounted] = useState(false);
 
   // Prevent hydration mismatch
@@ -80,8 +79,20 @@ const NavBar: React.FC<{
     }
   }, [isMouseNearTop, scrollPosition, showNav]);
 
-  if (!mounted) return null;
+  // Disable scrolling when the modal is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden'; // Disable scrolling
+    } else {
+      document.body.style.overflow = 'auto'; // Enable scrolling
+    }
 
+    return () => {
+      document.body.style.overflow = 'auto'; // Cleanup
+    };
+  }, [isMenuOpen]);
+
+  if (!mounted) return null;
   return (
     <div>
       {!isMenuOpen ? (
@@ -95,13 +106,13 @@ const NavBar: React.FC<{
               : 'translate-y-0 opacity-100'
           } 
           ${theme === 'dark' ? 'navbar-gradient-dark' : 'navbar-gradient'} 
-          z-50 backdrop-blur-md bg-opacity-50 dark:bg-opacity-50`}
+          z-40 backdrop-blur-md bg-opacity-50 dark:bg-opacity-50`}
         >
           <div className='flex items-center space-x-4 gap-8'>
             <div className='sm:hidden'>
               <button
                 onClick={() => setMenuOpen(!isMenuOpen)}
-                className='text-gray-700 dark:text-white hover:text-gray-200 transition cursor-pointer'
+                className='text-gray-700 dark:text-white dark:hover:text-gray-200 hover:text-gray-800 transition cursor-pointer'
               >
                 <FaBars size={24} />
               </button>
@@ -146,10 +157,10 @@ const NavBar: React.FC<{
             >
               <div className='flex items-center space-x-4 pt-1  '>
                 <div
-                  className={`p-2 rounded-full transition border-2 ${
+                  className={`p-2 rounded-full transition ${
                     theme === 'dark'
-                      ? 'bg-gray-800 hover:bg-gray-200 text-white border-gray-200'
-                      : 'bg-gray-200 hover:bg-gray-800 text-black border-gray-700'
+                      ? 'bg-gray-600 hover:bg-gray-300 text-white'
+                      : 'bg-gray-300 hover:bg-gray-600 text-black'
                   }`}
                 >
                   {theme === 'dark' ? (
@@ -168,7 +179,7 @@ const NavBar: React.FC<{
           onClick={() => setMenuOpen(false)} // Close menu when clicking outside
         >
           <div
-            className='w-full fixed top-0 left-0 dark:bg-gray-800 bg-white h-full z-50 p-6 shadow-xl transform transition-all duration-300'
+            className=' w-full fixed top-0 left-0 dark:bg-gray-700 bg-white h-full z-40 p-6 shadow-xl transform transition-all duration-300'
             onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside
           >
             <div className='flex justify-between items-center mb-8'>
@@ -184,19 +195,20 @@ const NavBar: React.FC<{
               </button>
             </div>
 
-            <div className='flex flex-col space-y-6 '>
-              {navbar
-                .filter((item) => (path ? item.link !== path : item))
-                .map((item, index) => (
-                  <Link
-                    key={index}
-                    className='flex items-center space-x-2 text-lg font-medium text-gray-800 dark:text-white hover:bg-gray-600 hover:text-white rounded-lg p-2 transition duration-200'
-                    href={item.link}
-                    onClick={() => setMenuOpen(false)} // Close the menu when an item is clicked
-                  >
-                    <span>{item.text}</span>
-                  </Link>
-                ))}
+            <div className='flex flex-col space-y-4 justify-between'>
+              {navbar.map((item, index) => (
+                <Link
+                  key={index}
+                  className={`px-4 py-2 cursor-pointer dark:hover:bg-gray-800 hover:bg-gray-200 text-theme-text hover:rounded ${
+                    path === item.link &&
+                    'dark:bg-gray-800 bg-gray-300 rounded border dark:border-white border-black'
+                  }`}
+                  href={item.link}
+                  onClick={() => setMenuOpen(false)} // Close the menu when an item is clicked
+                >
+                  <span>{item.text}</span>
+                </Link>
+              ))}
             </div>
           </div>
         </div>

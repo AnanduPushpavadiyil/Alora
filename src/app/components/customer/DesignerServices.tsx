@@ -8,7 +8,7 @@ import { designerServices } from '@/app/components/customer/common/dummyData';
 const DesignerServices = () => {
   return (
     <motion.div
-      className='mt-10 w-full px-4 h-[50%]'
+      className='w-full px-4 h-[50%]'
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1, delay: 0.8 }}

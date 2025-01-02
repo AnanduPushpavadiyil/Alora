@@ -31,7 +31,7 @@ const ContactUs: React.FC = () => {
       {isLoading && <Loader />}
 
       <motion.div
-        className='min-h-screen bg-gray-200 dark:bg-gray-700 flex flex-col items-center justify-center pt-24 p-4'
+        className='min-h-screen bg-gray-200 dark:bg-gray-700 flex flex-col items-center justify-center p-4'
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
@@ -125,7 +125,7 @@ const ContactUs: React.FC = () => {
                 name='message'
                 rows={4}
                 required
-                className='mt-1 block w-full border-gray-300 dark:border-gray-600 dark:bg-gray-700 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'
+                className='mt-1 block w-full border-gray-300 dark:border-gray-600 dark:bg-gray-700 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm resize-none'
               ></textarea>
             </div>
             <button

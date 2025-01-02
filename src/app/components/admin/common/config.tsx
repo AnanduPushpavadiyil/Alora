@@ -1,10 +1,17 @@
+import { FaFile } from 'react-icons/fa';
+import { MdDashboardCustomize } from 'react-icons/md';
+
 export const sidebar = [
   {
     text: 'Dashboard',
-    link: '/dashboard',
+    icon: MdDashboardCustomize,
   },
   {
     text: 'Entry',
-    link: '/entry',
+    icon: FaFile,
+  },
+  {
+    text: 'Photo',
+    icon: FaFile,
   },
 ];
