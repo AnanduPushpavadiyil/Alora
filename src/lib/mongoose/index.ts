@@ -33,6 +33,10 @@ async function dbConnect(): Promise<mongoose.Connection> {
       .connect(config.mongoose.url as string, options)
       .then((mongoose) => {
         return mongoose.connection;
+      })
+      .catch((err) => {
+        // console.error('Database connection error:', err);
+        throw err;
       });
   }
 

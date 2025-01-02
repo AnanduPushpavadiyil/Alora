@@ -15,7 +15,7 @@ const Wrapper: React.FC<{
         <div className=''>
           <NavBar path={path} />
         </div>
-        {children}
+        <div className='bg-gray-200 dark:bg-gray-700 pt-24'>{children}</div>
       </div>
       <Footer />
     </>

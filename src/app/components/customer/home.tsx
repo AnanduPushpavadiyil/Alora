@@ -8,14 +8,11 @@ import PhotographyGallery from '@/app/components/customer/PhotographyGallery';
 const Home: React.FC = () => {
   return (
     <motion.div
-      className='min-h-screen bg-cover bg-center pt-24 bg-gray-200 dark:bg-gray-700'
+      className='min-h-screen bg-cover bg-center bg-gray-200 dark:bg-gray-700'
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
     >
-      <section className='dark:bg-gray-700 bg-gray-200 py-8'>
-        <EnquiryModal />
-      </section>
       {/* Highlighted Section for Designer Stitching & Wedding Dresses */}
       <section className='dark:bg-gray-700 bg-gray-200 py-8'>
         <DesignerServices />
@@ -27,6 +24,9 @@ const Home: React.FC = () => {
       {/* Featured Products */}
       <section className='p-6 bg-gray-200 dark:bg-gray-700'>
         <PhotographyGallery />
+      </section>
+      <section className='dark:bg-gray-700 bg-gray-200 py-8'>
+        <EnquiryModal />
       </section>
     </motion.div>
   );

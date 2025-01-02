@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { NotificationType } from '@/app/components/hooks/toastify/enums';
 import useToast from '@/app/components/hooks/toastify/useToast';
@@ -34,6 +34,19 @@ const EnquiryModal: React.FC = () => {
     }, 2000); // Simulate a delay of 2 seconds
   };
 
+  // Disable scrolling when the modal is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden'; // Disable scrolling
+    } else {
+      document.body.style.overflow = 'auto'; // Enable scrolling
+    }
+
+    return () => {
+      document.body.style.overflow = 'auto'; // Cleanup
+    };
+  }, [isOpen]);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -43,7 +56,7 @@ const EnquiryModal: React.FC = () => {
       {!isOpen ? (
         <motion.button
           onClick={() => setIsOpen(true)}
-          className='fixed bottom-[10%] right-0 z-50 flex flex-row items-center w-[220px] gap-2 rounded-l-lg bg-gradient-to-r to-gray-200 from-gray-600 dark:to-gray-700 dark:from-gray-200 text-white max-sm:flex sm:h-[50px] md:h-[60px] lg:h-[72px] xl:h-[80px] group overflow-hidden'
+          className='fixed bottom-[10%] right-0 z-40 flex flex-row items-center w-[220px] gap-2 rounded-l-lg bg-gradient-to-r to-gray-200 from-gray-600 dark:to-gray-700 dark:from-gray-200 text-white max-sm:flex sm:h-[50px] md:h-[60px] lg:h-[72px] xl:h-[80px] group overflow-hidden'
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
@@ -66,7 +79,7 @@ const EnquiryModal: React.FC = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
-          className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50'
+          className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-40'
         >
           {isLoading && <Loader />}
           <motion.div
@@ -136,7 +149,7 @@ const EnquiryModal: React.FC = () => {
                   id='message'
                   name='message'
                   rows={4}
-                  className='mt-1 block w-full border-gray-300 dark:border-gray-600 dark:bg-gray-700 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'
+                  className='mt-1 block w-full border-gray-300 dark:border-gray-600 dark:bg-gray-700 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm  resize-none'
                 />
               </div>
               <div className='flex justify-end'>
